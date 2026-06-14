@@ -1,0 +1,37 @@
+# Writing ansible code for installing tools in ec2 instance like docker.
+---
+- name: installing tools
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Update Cache
+      apt:
+        update_cache: yes
+
+    - name: Install required tools
+      apt:
+        name:
+          - git
+          - curl
+          - docker.io
+          - unzip
+          - htop
+          - jq
+          - net-tools
+
+    - name: Add user to docker group
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
+
+    - name: Start Docker Services
+      service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Verify Docker Installation
+      command: docker --version
+      changed_when: false
