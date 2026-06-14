@@ -55,7 +55,7 @@ jobs:
 
             - name: Push to Dockerhub
               run: |
-                docker push prashantkumar1911/demo1:${{github.sha}} \
+                docker push prashantkumar1911/demo1:${{github.sha}}
                 docker push prashantkumar1911/demo1:latest
 
     deploy:
