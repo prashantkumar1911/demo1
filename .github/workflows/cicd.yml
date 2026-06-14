@@ -53,6 +53,11 @@ jobs:
                 username: prashantkumar1911
                 password: ${{ secrets.DOCKER_PASSWORD }}
 
+            - name: Push to Dockerhub
+              run: |
+                docker push prashantkumar1911/demo1:${{github.sha}} \
+                docker push prashantkumar1911/demo1:latest
+
     deploy:
         if: github.event_name == 'push'
         runs-on: self-hosted
