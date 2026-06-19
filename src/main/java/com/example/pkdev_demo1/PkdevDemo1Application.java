@@ -9,5 +9,4 @@ public class PkdevDemo1Application {
 	public static void main(String[] args) {
 		SpringApplication.run(PkdevDemo1Application.class, args);
 	}
-
 }

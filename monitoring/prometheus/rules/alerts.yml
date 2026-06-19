@@ -1,0 +1,17 @@
+groups:
+  - name: springboot-alerts
+
+    rules:
+
+      - alert: SpringBootDown
+
+        expr: up{job="springboot"} == 0
+
+        for: 30s
+
+        labels:
+          severity: critical
+
+        annotations:
+          summary: "Spring Boot application is down"
+          description: "Prometheus cannot reach Spring Boot for 30 seconds."
